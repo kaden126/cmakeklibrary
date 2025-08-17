@@ -1,5 +1,10 @@
 enable_testing()
 include(FetchContent)
+
+macro(log)
+    message("----- [Project: ${CMAKE_PROJECT_NAME} Path: ${CMAKE_CURRENT_SOURCE_DIR} Version: ${CMAKE_VERSION}] -----")
+endmacro()
+
 macro(new_executable name primary public_modules private_modules public_sources private_sources)
     add_executable(${name} ${primary})
     list(APPEND executables ${name})
@@ -11,7 +16,7 @@ macro(new_executable name primary public_modules private_modules public_sources 
     target_sources(${name} PRIVATE FILE_SET private_mods TYPE CXX_MODULES FILES ${private_modules})
     target_sources(${name} PUBLIC FILE_SET public_mods TYPE CXX_MODULES FILES ${public_modules})
 
-    message("[⚡️] Added executable '${name}"')
+    message("[⚡️] Added executable '${name}'")
 endmacro()
 
 macro(new_library name public_modules private_modules public_sources private_sources)
@@ -25,7 +30,7 @@ macro(new_library name public_modules private_modules public_sources private_sou
     target_sources(${name} PRIVATE FILE_SET private_mods TYPE CXX_MODULES FILES ${private_modules})
     target_sources(${name} PUBLIC FILE_SET public_mods TYPE CXX_MODULES FILES ${public_modules})
 
-    message("[📖] Added library '${name}"')
+    message("[📖] Added library '${name}'")
 endmacro()
 
 macro(new_test name primary public_modules private_modules public_sources private_sources)
@@ -41,7 +46,7 @@ macro(new_test name primary public_modules private_modules public_sources privat
 
     add_test(NAME ${name} COMMAND ${name})
 
-    message("[🧪] Added test '${name}"')
+    message("[🧪] Added test '${name}'")
 endmacro()
 
 macro(compiler_flags affected_targets flags)
@@ -68,5 +73,5 @@ macro(import name path)
     )
     FetchContent_MakeAvailable(${name})
 
-    message("[📦] Imported package '${name}"')
+    message("[📦] Imported package '${name}'")
 endmacro()

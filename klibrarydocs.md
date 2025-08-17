@@ -261,3 +261,12 @@ import("imported_project" "path/to/imported/project")
 ```
 
 ---
+
+## *log*
+Logs info about the current project status.
+
+### Example
+
+```cmake
+log()
+```
