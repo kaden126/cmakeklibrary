@@ -10,6 +10,8 @@ macro(new_executable name primary public_modules private_modules public_sources 
 
     target_sources(${name} PRIVATE FILE_SET private_mods TYPE CXX_MODULES FILES ${private_modules})
     target_sources(${name} PUBLIC FILE_SET public_mods TYPE CXX_MODULES FILES ${public_modules})
+
+    message("[⚡️] Added executable '${name}"')
 endmacro()
 
 macro(new_library name public_modules private_modules public_sources private_sources)
@@ -22,6 +24,8 @@ macro(new_library name public_modules private_modules public_sources private_sou
 
     target_sources(${name} PRIVATE FILE_SET private_mods TYPE CXX_MODULES FILES ${private_modules})
     target_sources(${name} PUBLIC FILE_SET public_mods TYPE CXX_MODULES FILES ${public_modules})
+
+    message("[📖] Added library '${name}"')
 endmacro()
 
 macro(new_test name primary public_modules private_modules public_sources private_sources)
@@ -36,6 +40,8 @@ macro(new_test name primary public_modules private_modules public_sources privat
     target_sources(${name} PUBLIC FILE_SET public_mods TYPE CXX_MODULES FILES ${public_modules})
 
     add_test(NAME ${name} COMMAND ${name})
+
+    message("[🧪] Added test '${name}"')
 endmacro()
 
 macro(compiler_flags affected_targets flags)
@@ -61,4 +67,6 @@ macro(import name path)
             SOURCE_DIR ${path}
     )
     FetchContent_MakeAvailable(${name})
+
+    message("[📦] Imported package '${name}"')
 endmacro()
