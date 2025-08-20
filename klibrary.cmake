@@ -75,3 +75,12 @@ macro(import name path)
 
     message("[📦] Imported local package '${name}'")
 endmacro()
+
+macro(git_import name url)
+    FetchContent_Declare(
+            ${name}
+            URL ${url}
+    )
+    FetchContent_MakeAvailable(${name})
+    message("[📦] Imported repository package '${name}'")
+endmacro()
