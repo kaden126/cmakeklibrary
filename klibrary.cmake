@@ -73,5 +73,5 @@ macro(import name path)
     )
     FetchContent_MakeAvailable(${name})
 
-    message("[📦] Imported package '${name}'")
+    message("[📦] Imported local package '${name}'")
 endmacro()
