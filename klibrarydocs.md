@@ -270,3 +270,22 @@ Logs info about the current project status.
 ```cmake
 log()
 ```
+
+---
+
+## git_import
+Imports a git repository as a library. Making the libraries, tests, executables, etc. available in the current project.
+
+Simillar to the `import` function, but takes a git repository URL as an argument.
+
+### Parameters
+
+`name` - The name of the imported project.
+
+`url` - The URL of the git repository.
+
+### Example
+
+```cmake 
+git_import("imported_project" "https://github.com/user/repo.git")
+```
